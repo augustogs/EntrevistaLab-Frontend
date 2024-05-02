@@ -27,7 +27,7 @@ const Feedback = () => {
                                 <li key={index} className='feedback-item'>
                                     <p>Pergunta {index+1}: {pergunta}</p>
                                     <p>Resposta: {respostas[index]}</p>
-                                    <p>{textoFeedback[index]}</p>
+                                    <p style={{fontWeight: 450}}>{textoFeedback[index]}</p>
                                 </li>
                             ))}
                         </ul>
