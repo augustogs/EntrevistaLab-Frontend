@@ -1,36 +1,34 @@
 .feedback {
+    position: relative;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
     height: 90vh;
-    width: 100%;
     background-color: #F5FCFF;
 }
 
 .feedback ul {
-    margin: 0 20em;
-    border: 2px solid #EEEEEE;
+    width: 90%;
+    max-width: 600px; 
+    margin: 0 auto;
+    border-style: outset;
     padding: 15px;
+    overflow-y: auto;
 }
 
 .feedback-list {
-    max-height: 400px; 
-    overflow-y: auto;
+    max-height: 300px;
     background-color: #F5FCFF;
     list-style: none;
-}
-
-.feedback-item {
-    margin: 20px;
-    border-style: outset;
+    padding: 0;
 }
 
 .feedback-item p {
     margin: 10px;
 }
 
-.feedback button {
+.reiniciar-treino {
     margin-top: 15px;
     padding: 10px;
     width: 15em;
@@ -43,7 +41,7 @@
     color: #F5FCFF;
 }
 
-.feedback button:hover {
+.reiniciar-treino:hover {
     cursor: pointer;
     background-color: aquamarine;
     color: #3A3838;
@@ -51,4 +49,27 @@
 
 .textoFeedback {
     font-weight: 420px;
+}
+
+.botoes-navegacao {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 15px;
+    margin-bottom: 15px;
+}
+
+.botoes-navegacao button {
+    border-radius: 15px;
+    border-style: none;
+    padding: 10px;
+}
+
+.botoes-navegacao button:hover {
+    cursor: pointer;
+    background-color: #16B4EC;
+    color: #F5FCFF;
+}
+
+.botoes-navegacao button {
+    margin: 0 10px;
 }

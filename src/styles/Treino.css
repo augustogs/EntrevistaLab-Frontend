@@ -6,28 +6,32 @@
 
     height: 90vh;
     width: 100%;
-    background-color: #F5FCFF;   
+    background-color: #F5FCFF;
+    min-width: 300px;
 }
 
 .pr-container {
     display: flex;
     flex-direction: column;
     justify-content: center;
-    align-items: center;
+    align-items: flex-start;
     position: relative;
     width: 70%;
+    
 }
 
 .pr-container  p {
-    width: 70%;
+    box-sizing: border-box;
+    width: 100%;
     border: 1px solid #3A3838;
     padding: 50px;
-    height: 50px;
+    max-height: 50vh;
 }
 
 .pr-container  textarea {
     height: 50px;
-    width: 70%;
+    width: 100%;
+    box-sizing: border-box;
     padding: 50px;
     margin-top: 15px;
     white-space: normal;
@@ -55,15 +59,15 @@
 
 .pergunta-info {
     position: absolute;
-    right: 7em;
+    right: 0;
     top: -10px;
     font-weight: 450;
 }
 
 .resposta-info {
     position: absolute;
-    right: 7em;
-    bottom: 23vh;
+    right: 0;
+    bottom: 100px;
     font-weight: 450;
 }
 
