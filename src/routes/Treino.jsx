@@ -36,7 +36,7 @@ const Treino = () => {
 
     const requestPerguntas = async (areaAtuacao) => {
         try {
-            const resposta = await fetch('http://localhost:3000/perguntas', {
+            const resposta = await fetch('https://entrevistalab-backend.vercel.app/perguntas', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'
@@ -60,7 +60,7 @@ const Treino = () => {
 
     const requestFeedback = async (perguntas, respostas) => {
         try {
-            const resposta = await fetch('http://localhost:3000/feedback', {
+            const resposta = await fetch('https://entrevistalab-backend.vercel.app/feedback', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'
