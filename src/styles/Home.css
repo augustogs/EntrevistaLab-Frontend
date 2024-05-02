@@ -1,0 +1,40 @@
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    text-align: center;
+
+    background-color: #F5FCFF;
+
+    height: 90vh;
+    width: 70%;
+    margin: auto;
+}
+
+.conteudo {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    margin: auto;
+}
+
+.praticar {
+    background-color: #16B4EC;
+    color: #FFFAFA;
+
+    margin-top: 15px;
+    padding: 10px;
+    width: 15em;
+    font-size: 15px;
+    font-weight: bold;
+    text-decoration: none;
+}
+
+.praticar:hover {
+    color: #3A3838;
+    background-color: aquamarine;
+}
+
