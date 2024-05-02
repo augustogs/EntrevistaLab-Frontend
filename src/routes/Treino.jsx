@@ -75,7 +75,7 @@ const Treino = () => {
             const dados = await resposta.json();
             const textoFeedback = dados.textoFeedback;
             
-            navigate("/feedback", { state: { textoFeedback: textoFeedback } });
+            navigate("/feedback", { state: { textoFeedback: textoFeedback, perguntas: perguntas, respostas: respostas } });
         } catch (error) {
             console.error('Erro ao enviar os dados para a API:', error.message);
         }

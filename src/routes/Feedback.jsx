@@ -6,6 +6,9 @@ import '../styles/Feedback.css';
 const Feedback = () => {
     const location = useLocation();
     const navigate = useNavigate();
+
+    const perguntas = location.state?.perguntas;
+    const respostas = location.state?.respostas;
     const textoFeedback = location.state?.textoFeedback;
 
     const reiniciarTreino = () => {
@@ -20,8 +23,12 @@ const Feedback = () => {
                 {textoFeedback && (
                     <div>
                         <ul className='feedback-list'>
-                            {textoFeedback.map((item, index) => (
-                                <li key={index}>{`Resposta ${index + 1} - ${item}`}</li>
+                            {perguntas.map((pergunta, index) => (
+                                <li key={index} className='feedback-item'>
+                                    <p>Pergunta {index+1}: {pergunta}</p>
+                                    <p>Resposta: {respostas[index]}</p>
+                                    <p>{textoFeedback[index]}</p>
+                                </li>
                             ))}
                         </ul>
                     </div>

@@ -5,17 +5,29 @@
     align-items: center;
     height: 90vh;
     width: 100%;
+    background-color: #F5FCFF;
 }
 
 .feedback ul {
     margin: 0 20em;
-    border: 1px solid;
+    border: 2px solid #EEEEEE;
     padding: 15px;
-    list-style-type: none;
 }
 
-.feedback li {
-    margin-bottom: 15px;
+.feedback-list {
+    max-height: 400px; 
+    overflow-y: auto;
+    background-color: #F5FCFF;
+    list-style: none;
+}
+
+.feedback-item {
+    margin: 20px;
+    border-style: outset;
+}
+
+.feedback-item p {
+    margin: 10px;
 }
 
 .feedback button {
@@ -35,9 +47,4 @@
     cursor: pointer;
     background-color: aquamarine;
     color: #3A3838;
-}
-
-.feedback-list {
-    max-height: 300px; 
-    overflow-y: auto;
 }
