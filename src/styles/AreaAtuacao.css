@@ -1,26 +1,53 @@
-.container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-
+.area-container {
     height: 90vh;
-    background-color: #F5FCFF;   
+    width: 100%;
+/*    background-color: #F5FCFF; */
+       
+    display: grid;
+    grid-template-columns: 0.5fr 1fr 1fr 1fr 1fr;
+    grid-template-rows: 5em auto;
+}
+
+.nav {  
+    grid-row: 1 / 5;
+    background-color: #fff2f2;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.nav button {
+    padding: 10px;
+    margin: 15px;
+    width: 120px;
+
+    border-radius: 10px;
+    cursor: pointer;
+    border: none;
+    font-weight: bold;
+    color: #3A3838;
+    background-color: white;
+}
+
+.nav button:hover {
+    background-color: aquamarine;
+}
+
+.area-container button {
+    grid-row: 1 / 2;
 }
 
 .area-atuacao {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
+    grid-row: 2 / 4;
+    grid-column: 3 / 5;
     position: relative;
-
-    height: 60vh;
-    width: 60%;
-    min-width: 300px;
 
     border-radius: 10px;
     background-color: #6ed6ff;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 }
 
 .area-atuacao h3 {
@@ -29,10 +56,10 @@
     margin: 5px;
 }
 
-.area-atuacao button {
+button {
     padding: 10px;
     margin: 3px;
-    width: 35%;
+    width: 150px;
 
     border-radius: 15px;
     cursor: pointer;
@@ -41,7 +68,7 @@
     color: #3A3838;
 }
 
-.area-atuacao button:hover {
+button:hover {
     background-color: aquamarine;
 }
 

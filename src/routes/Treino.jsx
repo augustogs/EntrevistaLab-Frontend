@@ -1,9 +1,11 @@
 import { useState, useEffect } from 'react';
-import { useLocation, useNavigate } from 'react-router-dom';
+import { useLocation, useNavigate} from 'react-router-dom';
 
 import Header from '../components/Header/Header';
+import Nav from '../components/Nav/Nav';
 import AnimacaoPerguntas from '../components/AnimacaoPerguntas/AnimacaoPerguntas';
 import AnimacaoFeedback from '../components/AnimacaoFeedback/AnimacaoFeedback';
+import LocalStorageChecker from '../components/LocalStorageChecker/LocalStorageChecker';
 
 import '../styles/Treino.css'
 
@@ -17,10 +19,13 @@ const Treino = () => {
     const [respostaAtual, setRespostaAtual] = useState(""); 
     const [botaoResponderHabilitado, setBotaoResponderHabilitado] = useState(false);
     const [gerandoPerguntas, setGerandoPerguntas] = useState(true);
-    const [gerandoFeedback, setGerandoFeedback] = useState(false); 
+    const [gerandoFeedback, setGerandoFeedback] = useState(false);
 
+    
     const location = useLocation();
     const navigate = useNavigate();
+
+    const storedUsername = localStorage.getItem('username');
 
     useEffect(() => {
         if (location.state && location.state.areaAtuacao) {
@@ -65,7 +70,7 @@ const Treino = () => {
                 headers: {
                     'Content-Type': 'application/json'
                 },
-                body: JSON.stringify({ perguntas, respostas })
+                body: JSON.stringify({ storedUsername, areaAtuacao, perguntas, respostas })
             });
     
             if (!resposta.ok) {
@@ -75,7 +80,7 @@ const Treino = () => {
             const dados = await resposta.json();
             const textoFeedback = dados.textoFeedback;
             
-            navigate("/feedback", { state: { textoFeedback: textoFeedback, perguntas: perguntas, respostas: respostas } });
+            navigate("/feedback", { state: { usuario: storedUsername, areaAtuacao: areaAtuacao, textoFeedback: textoFeedback, perguntas: perguntas, respostas: respostas } });
         } catch (error) {
             console.error('Erro ao enviar os dados para a API:', error.message);
         }
@@ -106,34 +111,39 @@ const Treino = () => {
     };
 
     return (
-        <>
+        <LocalStorageChecker>
             <Header />
             <div className='treino-container'>
-                <h2>Área: {areaAtuacao}</h2>
-                {gerandoPerguntas && <AnimacaoPerguntas />}
-                {erro && <p>Ocorreu um erro: {erro}</p>}
-                {perguntas && !gerandoPerguntas && (
-                    <div className='pr-container'>
-                        <div className="pergunta-info">
-                            <span>{`Pergunta ${indicePergunta + 1}/${perguntas.length}`}</span>
+                <div className="nav-treino">
+                    <Nav usuario={storedUsername}/>
+                </div>
+                <div className="treino">
+                    <h2>Área: {areaAtuacao}</h2>
+                    {gerandoPerguntas && <AnimacaoPerguntas />}
+                    {erro && <p>Ocorreu um erro: {erro}</p>}
+                    {perguntas && !gerandoPerguntas && (
+                        <div className='pr-container'>
+                            <div className="pergunta-info">
+                                <span>{`Pergunta ${indicePergunta + 1}/${perguntas.length}`}</span>
+                            </div>
+                            <p>{extrairPerguntaAtual()}</p>
+                            <textarea 
+                                id='resposta'
+                                autoComplete='off'
+                                autoFocus
+                                value={respostaAtual}
+                                onChange={handleRespostaChange}
+                            />
+                            <span className='resposta-info'>Resposta</span>
                         </div>
-                        <p>{extrairPerguntaAtual()}</p>
-                        <textarea 
-                            id='resposta'
-                            autoComplete='off'
-                            autoFocus
-                            value={respostaAtual}
-                            onChange={handleRespostaChange}
-                        />
-                        <span className='resposta-info'>Resposta</span>
-                    </div>
-                )}
-                {!gerandoPerguntas && (
-                    <button onClick={responder} disabled={!botaoResponderHabilitado}>Responder</button>
-                )}
-                {gerandoFeedback && <AnimacaoFeedback />}
+                    )}
+                    {!gerandoPerguntas && (
+                        <button className='btn-responder' onClick={responder} disabled={!botaoResponderHabilitado}>Responder</button>
+                    )}
+                    {gerandoFeedback && <AnimacaoFeedback />}
+                </div>
             </div>
-        </>
+        </LocalStorageChecker>
     );
 };
 

@@ -1,0 +1,17 @@
+.barra-esquerda {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: #fff2f2;
+}
+
+.link-perfil {
+    margin-top: 25px;
+    text-decoration: none;
+    font-size: 20px;
+    color: #16B4EC;
+    padding: 10px;
+    border-radius: 10px;
+    font-weight: bold;
+
+}

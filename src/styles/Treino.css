@@ -1,23 +1,32 @@
 .treino-container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
+    display: grid;
+    grid-template-columns: 0.5fr 1fr 1fr 1fr 1fr 1fr;
+    grid-template-rows: 5em auto;
 
     height: 90vh;
-    width: 100%;
     background-color: #F5FCFF;
-    min-width: 300px;
+}
+
+.nav-treino {  
+    grid-row: 1 / 6;
+    background-color: #d5f3ff;
+}
+
+.treino {
+    grid-row: 3 / 6;
+    grid-column: 3 / 6;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 }
 
 .pr-container {
     display: flex;
     flex-direction: column;
-    justify-content: center;
-    align-items: flex-start;
-    position: relative;
-    width: 70%;
-    
+    justify-content: center;    
+    position: relative;    
 }
 
 .pr-container  p {
@@ -40,7 +49,7 @@
     border: 1px solid #3A3838;
 }
 
-.treino-container button {
+.btn-responder {
     margin-top: 15px;
     padding: 10px;
     width: 15em;
@@ -51,7 +60,7 @@
     color: #3A3838;
 }
 
-.treino-container button:enabled {
+.btn-responder:enabled {
     cursor: pointer;
     background-color: #16B4EC;
     color: #F5FCFF;

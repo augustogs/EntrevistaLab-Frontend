@@ -15,7 +15,7 @@ const Home = () => {
                 Refine suas habilidades ao abordar questões cruciais, ganhe novos entendimentos sobre suas 
                 respostas e sinta-se mais seguro durante entrevistas. 
               </p>
-              <Link to="/areas" className="praticar">Praticar</Link>
+              <Link to="/login" className="praticar">Praticar</Link>
             </div>
         </div>
       </>
