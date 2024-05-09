@@ -25,7 +25,7 @@ const Treino = () => {
     const location = useLocation();
     const navigate = useNavigate();
 
-    const storedUsername = localStorage.getItem('username');
+    const usuario = localStorage.getItem('username');
 
     useEffect(() => {
         if (location.state && location.state.areaAtuacao) {
@@ -70,7 +70,7 @@ const Treino = () => {
                 headers: {
                     'Content-Type': 'application/json'
                 },
-                body: JSON.stringify({ storedUsername, areaAtuacao, perguntas, respostas })
+                body: JSON.stringify({ usuario, areaAtuacao, perguntas, respostas })
             });
     
             if (!resposta.ok) {
@@ -79,8 +79,7 @@ const Treino = () => {
     
             const dados = await resposta.json();
             const textoFeedback = dados.textoFeedback;
-            
-            navigate("/feedback", { state: { usuario: storedUsername, areaAtuacao: areaAtuacao, textoFeedback: textoFeedback, perguntas: perguntas, respostas: respostas } });
+            navigate("/feedback", { state: { usuario: usuario, areaAtuacao: areaAtuacao, textoFeedback: textoFeedback, perguntas: perguntas, respostas: respostas } });
         } catch (error) {
             console.error('Erro ao enviar os dados para a API:', error.message);
         }
@@ -115,7 +114,7 @@ const Treino = () => {
             <Header />
             <div className='treino-container'>
                 <div className="nav-treino">
-                    <Nav usuario={storedUsername}/>
+                    <Nav usuario={usuario}/>
                 </div>
                 <div className="treino">
                     <h2>Área: {areaAtuacao}</h2>

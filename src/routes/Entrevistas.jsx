@@ -11,7 +11,7 @@ import '../styles/Entrevistas.css';
 
 const Entrevistas = () => {
 
-    const storedUsername = localStorage.getItem('username');
+    const usuario = localStorage.getItem('username');
     const [entrevistas, setEntrevistas] = useState([]);
     const [detalhesEntrevista, setDetalhesEntrevista] = useState(null);
     const [showPopup, setShowPopup] = useState(false);
@@ -20,7 +20,7 @@ const Entrevistas = () => {
     useEffect(() => {
         const buscarEntrevistas = async () => {
           try {
-            const response = await fetch(`https://entrevistalab-backend.vercel.app/entrevistas/${storedUsername}`);
+            const response = await fetch(`https://entrevistalab-backend.vercel.app/entrevistas/${usuario}`);
             if (!response.ok) {
               throw new Error('Erro ao buscar entrevistas');
             }
@@ -31,7 +31,7 @@ const Entrevistas = () => {
           }
         };
         buscarEntrevistas();
-      }, [storedUsername]);
+      }, [usuario]);
 
     const proximaDetalhe = () => {
         setIndiceDetalhe(prevIndice => Math.min(prevIndice + 1, detalhesEntrevista.perguntas.length - 1));
@@ -56,7 +56,7 @@ const Entrevistas = () => {
             <Header />
             <div className="entrevistas-container">
                 <div className="nav-entrevistas">
-                    <Nav usuario={storedUsername}/>
+                    <Nav usuario={usuario}/>
                 </div>
                 <div className="content-entrevistas">
                    <h2>Entrevistas realizadas</h2>

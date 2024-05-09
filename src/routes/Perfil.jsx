@@ -10,7 +10,6 @@ const Perfil = () => {
     const navigate = useNavigate();
 
     const storedUsername = localStorage.getItem('username');
-    console.log(storedUsername);
 
     const handleNavigation = () => {
         navigate("/areas");
